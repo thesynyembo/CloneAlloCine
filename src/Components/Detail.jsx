@@ -77,7 +77,7 @@ const Detail = () => {
           content="RETOUR"
           icon="left arrow"
           labelPosition="left"
-          style={{ left: "10%", marginTop: "5%" }}
+          style={{ left: "5%", marginTop: "5%" }}
         />
       </Link>
       <Div>
