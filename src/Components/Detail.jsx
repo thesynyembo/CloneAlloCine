@@ -1,15 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Grid,
-  Card,
-  Image,
-  Button,
-  Rating,
-  Item,
-  Header,
-  Icon,
-  Modal
-} from "semantic-ui-react";
+import { Grid, Image, Button, Item, Icon, Modal } from "semantic-ui-react";
 import styled from "styled-components";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
@@ -20,7 +10,7 @@ const Div = styled.div`
   background: #010326;
   margin-top: 7%;
   margin-left: 5%;
-  margin-right:5%;
+  margin-right: 5%;
   color: white;
   font-family: Lucida Console;
   color: white;
@@ -63,7 +53,6 @@ const Detail = () => {
         `https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=74dc0d8675d9c35ed25ec9e90a2cc597&language=fr`
       )
       .then((res) => {
-       
         setFilm(res.data.results);
         console.log("lol" + JSON.stringify(res.data.results));
       })
@@ -82,44 +71,46 @@ const Detail = () => {
       </Link>
       <Div>
         <Grid>
-        <Grid.Column mobile={8} tablet={8} computer={8}>  
-        <Image
-                    size="tiny"
-                    src={
-                      videos.poster_path === null
-                        ? "https://qph.fs.quoracdn.net/main-thumb-221356592-200-zyhrpkhlegkmkbjildezexzodkngkjec.jpeg"
-                        : "https://image.tmdb.org/t/p/w500/" +
-                          videos.poster_path
-                    }
-                    alt="..."
-                    style={{ height: "390px", width: "400px",left:"2%"}}
-                  /><br/><h5>Langue:{videos.original_language } </h5>
-                            </Grid.Column> 
-    <Grid.Column mobile={8} tablet={8} computer={8}>  
-    <H1>{videos.title}</H1>(réalisé en {videos.release_date})
-    <Item>
-    <Item.Extra>
-    <Icon color='green' name='check' />{videos.vote_count} Votes
-        </Item.Extra>
-        </Item><br /> <br />
-    <H1>Détail</H1>{videos.overview})<br/>      <br /> <br />
-    <Modal
-      trigger={<Button
-        inverted color='red'
-        content="ANNONCE"
-        icon={<Icon name='youtube' /> }
-        labelPosition="left"
-
-      />}
-      header='Annonce du Film'
-      content= {<Youtube videosId={film.key} autoplay/>}
-      actions={[ { key: 'done', content: 'Retour', negative: true }]}
-    />
-
-
-
-
-    </Grid.Column>
+          <Grid.Column mobile={8} tablet={8} computer={8}>
+            <Image
+              size="tiny"
+              src={
+                videos.poster_path === null
+                  ? "https://qph.fs.quoracdn.net/main-thumb-221356592-200-zyhrpkhlegkmkbjildezexzodkngkjec.jpeg"
+                  : "https://image.tmdb.org/t/p/w500/" + videos.poster_path
+              }
+              alt="..."
+              style={{ height: "390px", width: "400px", left: "2%" }}
+            />
+            <br />
+            <h5>Langue:{videos.original_language} </h5>
+          </Grid.Column>
+          <Grid.Column mobile={8} tablet={8} computer={8}>
+            <H1>{videos.title}</H1>(réalisé en {videos.release_date})
+            <Item>
+              <Item.Extra>
+                <Icon color="green" name="check" />
+                {videos.vote_count} Votes
+              </Item.Extra>
+            </Item>
+            <br /> <br />
+            <H1>Détail</H1>
+            {videos.overview})<br /> <br /> <br />
+            <Modal
+              trigger={
+                <Button
+                  inverted
+                  color="red"
+                  content="ANNONCE"
+                  icon={<Icon name="youtube" />}
+                  labelPosition="left"
+                />
+              }
+              header="Annonce du Film"
+              content={<Youtube videosId={film.key} autoplay />}
+              actions={[{ key: "done", content: "Retour", negative: true }]}
+            />
+          </Grid.Column>
         </Grid>
       </Div>
       <br /> <br />

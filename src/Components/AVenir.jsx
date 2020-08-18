@@ -29,7 +29,7 @@ const NavBar = styled.div`
 const Conteneur = styled.p`
   width: 75%;
   margin-left: 12.5%;
-  padding-top: 30%;
+  padding-top: 22%;
   text-align: center;
   background: black;
 `;
@@ -39,7 +39,7 @@ const Con = styled.h2`
   text-align: center;
 `;
 const P = styled.p`
-  padding-top: 10%;
+  padding-top: 6%;
   text-align: center;
   color: white;
 `;
@@ -86,7 +86,7 @@ function PagePopulaire() {
         <Header as="h2" floated="left">
           <Image
             src={logo}
-            style={{ left: "13%", width: "25%", marginTop: "0%" }}
+            style={{ left: "1%", width: "25%", marginTop: "0%" }}
           />
         </Header>
 
@@ -96,16 +96,17 @@ function PagePopulaire() {
           <P>
             <ButtonExampleInverted />
             <br />
+
             <Input
               icon={<Icon name="search" inverted circular link />}
               type="text"
-              placeholder="Recherce"
+              placeholder="Recherce...."
               onChange={(e) => recherche(e.target.value)}
             />
 
-            <h1>
-              <b>Découvrez des milliers de Films gratuites.</b>
-            </h1>
+            <h4>
+              <b>Découvrez les Films et vidéos.</b>
+            </h4>
           </P>
         </Grid.Column>
       </NavBar>

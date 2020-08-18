@@ -3,8 +3,7 @@ import { Grid } from "semantic-ui-react";
 import logo from "./video.mp4";
 import styled from "styled-components";
 
-const Div = styled.div`
-`;
+const Div = styled.div``;
 class Example extends React.Component {
   render() {
     return (
@@ -19,8 +18,8 @@ class Example extends React.Component {
               position: "fixed",
               width: "100%",
               left: "50%",
-              top: "2%",
-              height: "100%",
+              top: "5%",
+              height: "80%",
               transform: "translate(-50%, -50%)",
               zIndex: "-1",
             }}
