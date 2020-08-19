@@ -85,7 +85,7 @@ function PagePopulaire() {
         <Header as="h2" floated="left">
           <Image
             src={logo}
-            style={{ left: "1%", width: "25%" }}
+            style={{ left: "42%", width: "25%" }}
           />
         </Header>
 

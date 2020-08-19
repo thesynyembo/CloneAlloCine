@@ -89,7 +89,7 @@ const Detail = () => {
               style={{ height: "390px", width: "400px", left: "15%" }}
             />
             <br />
-            <H5>Langue : {videos.original_language} </H5>
+
           </Grid.Column>
           <Grid.Column mobile={8} tablet={8} computer={8}>
             <H1>{videos.title} </H1>
@@ -109,7 +109,7 @@ const Detail = () => {
                 </H5>
               </Item.Extra>
             </Item>
-            <br />
+            <H5>Langue : {videos.original_language} </H5>
             <h3>Détail</h3>
             {videos.overview === "" ? "Rien à signaler" : videos.overview}
             <br /> <br /> <br />
