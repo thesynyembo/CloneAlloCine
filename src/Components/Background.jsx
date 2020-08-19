@@ -18,7 +18,7 @@ class Example extends React.Component {
               position: "fixed",
               width: "100%",
               left: "50%",
-              top: "5%",
+              top: "2%",
               height: "80%",
               transform: "translate(-50%, -50%)",
               zIndex: "-1",

@@ -15,21 +15,20 @@ const Div = styled.div`
   color: white;
   font-family: Lucida Console;
   color: white;
-  font-family: 'Rancho', cursive;
+  font-family: "Rancho", cursive;
   // height: 420px;
-  .genre{
-  font-family: 'Rancho', cursive;
-  font-style: normal;
+  .genre {
+    font-family: "Rancho", cursive;
+    font-style: normal;
   }
 `;
 const H1 = styled.h1`
   color: white;
-  text-decoration:underline white;
+  text-decoration: underline white;
 `;
 const H5 = styled.h5`
-  color:  #fcc707;
+  color: #fcc707;
 `;
-
 
 const Detail = () => {
   let { id } = useParams();
@@ -48,7 +47,7 @@ const Detail = () => {
       .then((res) => {
         setVideos(res.data);
         setLoad(true);
-        setGenre(res.data.genres)
+        setGenre(res.data.genres);
       })
       .catch((e) => console.log(e));
 
@@ -93,18 +92,27 @@ const Detail = () => {
             <H5>Langue : {videos.original_language} </H5>
           </Grid.Column>
           <Grid.Column mobile={8} tablet={8} computer={8}>
-          <H1>{videos.title} </H1><br/>
-          <H5 className="genre">Genre(s):{genres.map((genre) => genre.name).join(' / ')}</H5> 
-            <h5>Sortie du film : Le {videos.release_date=== ""? "00/00/0000":videos.release_date}</h5>
+            <H1>{videos.title} </H1>
+            <br />
+            <H5 className="genre">
+              Genre(s):{genres.map((genre) => genre.name).join(" / ")}
+            </H5>
+            <h5>
+              Sortie du film : Le{" "}
+              {videos.release_date === "" ? "00/00/0000" : videos.release_date}
+            </h5>
             <Item>
               <Item.Extra>
-              <H5><Icon color="green" name="check" />
-                {videos.vote_count===""?"0":videos.vote_count} Votes</H5>
+                <H5>
+                  <Icon color="green" name="check" />
+                  {videos.vote_count === "" ? "0" : videos.vote_count} Votes
+                </H5>
               </Item.Extra>
             </Item>
             <br />
             <h3>Détail</h3>
-            {videos.overview===""?"Rien à signaler":videos.overview}<br /> <br /> <br />
+            {videos.overview === "" ? "Rien à signaler" : videos.overview}
+            <br /> <br /> <br />
             <Modal
               trigger={
                 <Button
@@ -114,11 +122,25 @@ const Detail = () => {
                   icon={<Icon name="youtube" />}
                   labelPosition="left"
                 />
-              }              
+              }
               header="Annonce du Film"
-            content={typeof film === 'undefined'?<Image src={ videos.poster_path === null? "https://qph.fs.quoracdn.net/main-thumb-221356592-200-zyhrpkhlegkmkbjildezexzodkngkjec.jpeg":"https://image.tmdb.org/t/p/w500/"+videos.backdrop_path}/>:<Youtube videoId={film.key} autoplay/>}
+              content={
+                typeof film === "undefined" ? (
+                  <Image
+                    src={
+                      videos.poster_path === null
+                        ? "https://qph.fs.quoracdn.net/main-thumb-221356592-200-zyhrpkhlegkmkbjildezexzodkngkjec.jpeg"
+                        : "https://image.tmdb.org/t/p/w500/" +
+                          videos.backdrop_path
+                    }
+                  />
+                ) : (
+                  <Youtube videoId={film.key} autoplay />
+                )
+              }
               actions={[{ key: "done", content: "Retour", negative: true }]}
-              style={{height:"480px",left:"10%",top:"10%"}}/>
+              style={{ height: "480px", left: "10%", top: "10%" }}
+            />
           </Grid.Column>
         </Grid>
       </Div>
