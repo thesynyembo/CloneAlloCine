@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-// import HeaderExampleFloating from "./Components/Header";
 import {
   BrowserRouter as Router,
   Route,

@@ -23,7 +23,6 @@ const NavBar = styled.div`
   position: fixed;
   width: 100%;
   z-index: 5;
-  top: 2%;
   // background: #CACACA;
 `;
 const Conteneur = styled.p`
@@ -135,14 +134,16 @@ function PagePopulaire() {
                       </Link>
                       <Card.Content>
                         <Con>
-                          <Card.Header>{e.title}</Card.Header>
+                          <Card.Header>
+                            {e.title === "" ? "Me" : e.title}
+                          </Card.Header>
                         </Con>
                         <Card.Meta
                           style={{ textAlign: "center", color: "white" }}
                         >
                           <span>
                             <Icon color="green" name="check" />{" "}
-                            {e.popularity == "" ? "null" : e.popularity} votes
+                            {e.popularity == "" ? "0" : e.popularity} votes
                           </span>
                         </Card.Meta>
                       </Card.Content>

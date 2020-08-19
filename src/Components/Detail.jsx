@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Footer from "./footer";
 import Youtube from "react-youtube";
+import LoaderExampleText from "./Telechargement";
 
 const Div = styled.div`
   background: #010326;
@@ -19,14 +20,7 @@ const Div = styled.div`
 const H1 = styled.h1`
   color: white;
 `;
-const P = styled.p`
-  color: white;
-  font-size: 20px;
-`;
-const H4 = styled.h1`
-  color: white;
-  font-size: 20px;
-`;
+
 
 const Detail = () => {
   let { id } = useParams();
@@ -34,8 +28,8 @@ const Detail = () => {
   console.log(params.id);
 
   const [videos, setVideos] = useState([]);
-  const [detail, setDetail] = useState([]);
   const [film, setFilm] = useState([]);
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
     axios
@@ -44,7 +38,7 @@ const Detail = () => {
       )
       .then((res) => {
         setVideos(res.data);
-        setDetail(res.data.detail);
+        setLoad(true);
       })
       .catch((e) => console.log(e));
 
@@ -58,6 +52,9 @@ const Detail = () => {
       })
       .catch((e) => console.log(e));
   }, []);
+  if (load === false) {
+    return <LoaderExampleText />;
+  }
   return (
     <>
       <Link to="/">
@@ -86,28 +83,29 @@ const Detail = () => {
             <h5>Langue:{videos.original_language} </h5>
           </Grid.Column>
           <Grid.Column mobile={8} tablet={8} computer={8}>
-            <H1>{videos.title}</H1>(réalisé en {videos.release_date})
+            <H1>{videos.title}</H1>(réalisé en {videos.release_date=== ""? "00/00/0000":videos.release_date})
             <Item>
               <Item.Extra>
                 <Icon color="green" name="check" />
-                {videos.vote_count} Votes
+                {videos.vote_count===""?"0":videos.vote_count} Votes
               </Item.Extra>
             </Item>
             <br /> <br />
             <H1>Détail</H1>
-            {videos.overview})<br /> <br /> <br />
+            {videos.overview===""?"Rien à sifnaler":videos.overview}<br /> <br /> <br />
             <Modal
               trigger={
                 <Button
                   inverted
                   color="red"
-                  content="ANNONCE"
+                  content="VOIR ANNONCE"
                   icon={<Icon name="youtube" />}
                   labelPosition="left"
                 />
-              }
+              }              
               header="Annonce du Film"
-              content={<Youtube videosId={film.key} autoplay />}
+              content={film.map((e)=>{return (e=== ""?"https://www.youtube.com/watch?v=CxQdjwkjMuA":<Youtube videosId={e.key} autoplay />)}
+                )}
               actions={[{ key: "done", content: "Retour", negative: true }]}
             />
           </Grid.Column>
